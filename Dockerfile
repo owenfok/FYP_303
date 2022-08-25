@@ -15,5 +15,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 80
+EXPOSE 80/tcp
+EXPOSE 80/udp
+EXPOSE 443/tcp
 CMD [ "node", "server.js" ]
