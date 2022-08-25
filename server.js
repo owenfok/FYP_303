@@ -1,4 +1,7 @@
 var express = require('express');
+var https = require('https');
+var http = require('http');
+var fs = require('fs');
 var env = require('dotenv').config()
 var ejs = require('ejs');
 var path = require('path');
@@ -7,6 +10,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+
 let seedDB     = require("./product-seed"),
     Product    = require("./models/product"),
     Cart       = require("./models/cart");
@@ -114,7 +118,16 @@ app.use(function (err, req, res, next) {
 });
 
 
-const PORT = process.env.PORT || 80;
-app.listen(PORT, function () {
-  console.log('Server is started on http://127.0.0.1:'+PORT);
+
+//var options = {
+//  key: fs.readFileSync('/path/to/key.pem'),
+//  cert: fs.readFileSync('/path/to/cert.pem')
+//};
+
+http.createServer(app).listen(80, function () {
+  console.log('Server is started on http://127.0.0.1:'+80);
 });
+
+//https.createServer(options, app).listen(443,function () {
+//  console.log('Server is started on http://127.0.0.1:'+443);
+//});
