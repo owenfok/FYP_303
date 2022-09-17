@@ -1,3 +1,5 @@
+// insert data to mongodb
+
 var mongoose = require("mongoose");
 var Product = require("./models/product");
 
